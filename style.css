@@ -1,0 +1,298 @@
+:root {
+    --primary: #8B461F;
+    --secondary: #FFE4B5;
+    --accent: #D2B48C;
+    --gold: #e7bb2b;
+    --white: #FFFFFF;
+    --text-dark: #3A2A1A;
+    --grad-bg: linear-gradient(135deg, #8B461F 0%, #FFE4B5 100%);
+    --font-main: 'Plus Jakarta Sans', sans-serif;
+    --font-arabic: 'Amiri', serif;
+    --font-title: 'Cinzel', serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-dark);
+    background-color: #faf6ff;
+    background-repeat: repeat;
+    background-image: linear-gradient(rgba(250, 246, 238, 0.9), rgba(250, 246, 238, 0.9)), /* Lapisan warna krem pelindung teks dengan opacity 60% */url('../assets/image/ads.jpeg');
+    background-size: 900px;
+    background-position: top center;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+/* Loader Screen */
+#loader {
+    position: fixed;
+    top:0; left:0; width:100vw; height:100vh;
+    background-color: var(--white);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s;
+}
+.loader-content { text-indent: center; text-align: center; }
+.mandala {
+    width: 80px; height: 80px;
+    border: 8px double var(--primary);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+    margin: 0 auto 15px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Global Ornaments */
+.ornament {
+    position: absolute; /* Mengunci posisi elemen secara independen */
+    width: 100px;       /* Ukuran lebar lentera */
+    height: 150px;      /* Ukuran tinggi lentera gantung */
+    
+    /* Gunakan background-size: contain agar lentera tidak gepeng/terpotong */
+    background-image: url('../assets/image/ornamen\ 3.png');
+    background-size: contain; 
+    background-repeat: no-repeat;
+    opacity: 0.5;       /* Mengatur kejelasan lentera (0.5 = cukup transparan & elegan) */
+    pointer-events: none;
+    
+    /* KUNCI UTAMA: Memberitahu browser agar posisi lentera DIABAIKAN dari tarikan Flexbox tengah */
+    z-index: 2; 
+}
+
+/* Mengatur lentera di pojok kiri atas */
+.top-left { 
+    top: 0; 
+    left: 5%; /* Memberikan sedikit jarak manis dari tepi kiri */
+}
+
+/* Mengatur lentera di pojok kanan atas */
+.top-right { 
+    top: 0; 
+    right: 5%; /* Memberikan sedikit jarak manis dari tepi kanan */
+}
+
+/* Pattern Background */
+.pattern-bg {
+    /* Mengganti bulatan-bulatan kecil dengan gambar batik asli yang transparan */
+    background-image: url('../assets/images/dsc.jpg');
+    background-size: 300px; /* Atur ukuran pola batik */
+    background-repeat: repeat;
+    opacity: 1.0; /* Menjaga agar teks tetap terbaca dengan jelas */
+    position: relative;
+}
+
+
+/* Floating Particles */
+.particles-container {
+    position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index: 1; overflow: hidden;
+}
+.particle {
+    position: absolute; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; opacity: 0.4;
+    bottom: -10px; animation: floatUp 12s infinite linear;
+}
+.particle:nth-child(1) { left: 10%; animation-duration: 10s; animation-delay: 1s; }
+.particle:nth-child(2) { left: 30%; animation-duration: 15s; animation-delay: 3s; }
+.particle:nth-child(3) { left: 50%; animation-duration: 12s; animation-delay: 0s; }
+.particle:nth-child(4) { left: 75%; animation-duration: 18s; animation-delay: 5s; }
+.particle:nth-child(5) { left: 90%; animation-duration: 11s; animation-delay: 2s; }
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    50% { opacity: 0.6; }
+    100% { transform: translateY(-105vh) scale(0.5); opacity: 0; }
+}
+
+/* Hero Section */
+#hero {
+    position: relative;
+    width: 100%; min-height: 100vh;
+    background: var(--grad-bg);
+    display: flex; justify-content: center; align-items: center;
+    text-align: center; color: var(--white);
+    padding: 40px 20px; box-sizing: border-box;
+
+    background-color: #8b4116;
+
+    background-image: url('../assets/image/DSC02255.JPG');
+    background-blend-mode: multiply;
+   
+        background-size: 1500px;
+        background-position: top left;
+}
+.hero-overlay {
+    position: absolute; top:0; left:0; width:100%; height:100%;
+    background: radial-gradient(circle, transparent 20%, rgba(58, 42, 26, 0.6) 100%);
+}
+.hero-content { position: relative; z-index: 3; max-width: 700px; }
+.arabic { font-family: var(--font-arabic); font-size: 1.8rem; margin-bottom: 15px; color: var(--secondary); }
+.sub-title { font-weight: 600; letter-spacing: 4px; font-size: 0.9rem; color: var(--secondary); display: block; margin-bottom: 10px; }
+.main-title { font-family: var(--font-title); font-size: 2.8rem; font-weight: 700; color: var(--white); margin-bottom: 20px; text-shadow: 0px 4px 8px rgba(0,0,0,0.5); }
+.angkatan-box h2 { font-family: var(--font-title); font-size: 1.8rem; color: var(--gold); letter-spacing: 2px; margin: 10px 0; text-shadow: 4px 3px 6px rgba(0, 0, 0, 0.5); }
+.and-text { font-style: italic; font-family: var(--font-arabic); font-size: 1.5rem; color: var(--secondary); }
+.penyelenggara { font-weight: 600; margin-top: 15px; letter-spacing: 2px; font-size: 1.1rem; }
+
+.guest-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 20px; border-radius: 12px;
+    margin: 30px auto; max-width: 400px;
+    box-shadow: 7px 4px 9px rgba(255,255,255,0.1);
+}
+.guest-box p { font-size: 0.9rem; color: var(--secondary); }
+#guest-name { font-size: 1.5rem; font-weight: 700; margin-top: 5px; color: var(--white); }
+
+/* Buttons */
+.btn-gold {
+    background: linear-gradient(135deg, #C9A227 0%, #A37F1A 100%);
+    color: var(--white); border: none;
+    padding: 14px 32px; font-size: 1rem; font-weight: 600;
+    border-radius: 30px; cursor: pointer; transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+    font-family: var(--font-main); text-decoration: none; display: inline-block;
+}
+.btn-gold:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(201, 162, 39, 0.6); }
+.style-full { width: 100%; }
+
+/* Main Content Structural Styling */
+.content-hidden { display: none; }
+.section-padding { padding: 80px 20px; position: relative; z-index: 2; }
+.container { max-width: 900px; margin: 0 auto; width: 100%; }
+.text-center { text-align: center; }
+
+/* Glassmorphism Card */
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(210, 180, 140, 0.3);
+    border-radius: 20px; padding: 40px 30px;
+    box-shadow: 0 15px 35px rgba(139, 70, 31, 0.06);
+    transition: transform 0.3s;
+}
+.glassmorphism:hover { transform: translateY(-5px); 
+box-shadow: 0 20px 40px rgba(139, 70, 31, 0.1); }
+
+/* Typography Rules */
+.quote-text { font-size: 1.2rem; font-style: italic; line-height: 1.8; margin-bottom: 10px; color: var(--text-dark); }
+.quote-author { font-weight: 600; color: var(--primary); }
+.badge { background-color: rgba(139, 70, 31, 0.1); color: var(--primary); padding: 6px 16px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; display: inline-block; }
+.opening-text { font-weight: 600; color: var(--primary); font-size: 1.1rem; margin-bottom: 15px; }
+.body-text { line-height: 1.7; font-size: 1.05rem; margin-bottom: 20px; }
+.highlight-title { font-family: var(--font-title); font-size: 1.8rem; color: var(--primary); margin: 25px 0; font-weight: 700; }
+.penyelenggara-text { font-size: 1.3rem; font-weight: 700; color: var(--gold); }
+.section-title { font-family: var(--font-title); font-size: 2.2rem; color: var(--primary); margin-bottom: 40px; font-weight: 700; text-align: center; }
+
+/* Countdown */
+.countdown-wrapper { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
+.countdown-item {
+    background: var(--primary); color: var(--white);
+    padding: 15px; border-radius: 12px; min-width: 80px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.countdown-item span { font-size: 2rem; font-weight: 700; display: block; color: var(--secondary); }
+.countdown-item p { font-size: 0.8rem; margin-top: 5px; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Timeline Modern */
+.timeline { position: relative; max-width: 700px; margin: 0 auto; padding-left: 30px; }
+.timeline::before {
+    content: ''; position: absolute; left: 40px; top: 0; width: 4px; height: 100%; background: var(--accent); opacity: 0.5;
+}
+.timeline-item { position: relative; margin-bottom: 30px; }
+.timeline-icon {
+    position: absolute; left: -5px; top: 15px; width: 30px; height: 30px;
+    background: var(--primary); border: 3px solid var(--secondary); color: var(--white);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; z-index: 2;
+}
+.timeline-content { margin-left: 40px; padding: 25px!important; }
+.timeline-content h4 { color: var(--gold); font-size: 1.2rem; margin-bottom: 5px; }
+
+/* Gallery Layout */
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.gallery-item {
+    position: relative; border-radius: 12px; overflow: hidden; height: 200px; cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.1); transition: transform 0.4s; }
+.gallery-overlay {
+    position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(139, 70, 31, 0.7);
+    display: flex; justify-content: center; align-items: center; opacity: 0.1; transition: opacity 0.3s;
+}
+.gallery-overlay i { color: var(--white); font-size: 1.8rem; }
+.gallery-item:hover img { transform: scale(1.1); }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+
+/* Lightbox Modal */
+.lightbox {
+    display: none; position: fixed; z-index: 10000; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9);
+    justify-content: center; align-items: center;
+}
+.lightbox-content { max-width: 85%; max-height: 80%; border-radius: 8px; animation: zoomIn 0.3s; }
+.close-lightbox { position: absolute; top: 20px; right: 30px; color: #fff; font-size: 3rem; cursor: pointer; }
+
+/* Ucapan Form */
+.ucapan-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+@media(max-width: 768px) { .ucapan-wrapper { grid-template-columns: 1fr; } }
+.form-group { margin-bottom: 20px; text-align: left; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--primary); }
+.form-group input, .form-group textarea {
+    width: 100%; padding: 12px; border: 1px solid var(--accent); border-radius: 8px;
+    font-family: var(--font-main); background: rgba(255,255,255,0.9); font-size: 1rem;
+}
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); }
+
+.comment-box { max-height: 400px; overflow-y: auto; text-align: left; }
+.comment-item { padding: 15px 0; border-bottom: 1px solid rgba(139, 70, 31, 0.1); }
+.comment-item h5 { color: var(--primary); font-size: 1.05rem; margin-bottom: 3px; }
+.comment-item p { font-size: 0.95rem; line-height: 1.5; color: var(--text-dark); }
+.comment-item small { color: #888; font-size: 0.75rem; }
+
+/* Share and Floating Utility Buttons */
+.share-buttons { display: flex; justify-content: center; gap: 15px; }
+.btn-tools {
+    border: 1px solid var(--primary); background: transparent; color: var(--primary);
+    padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: 600; transition: 0.3s;
+}
+.btn-tools:hover { background: var(--primary); color: var(--white); }
+.btn-tools.whatsapp { border-color: #25D366; color: #25D366; }
+.btn-tools.whatsapp:hover { background: #25D366; color: var(--white); }
+
+.music-btn, #back-to-top {
+    position: fixed; right: 20px; width: 50px; height: 50px; border-radius: 50%;
+    color: var(--white); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 999; transition: all 0.3s;
+}
+.music-btn { bottom: 85px; background: var(--primary); }
+#back-to-top { bottom: 20px; background: var(--gold); }
+.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+/* Footer */
+.footer-premium {
+    background: var(--grad-bg); color: var(--white); padding: 80px 20px 40px; position: relative; margin-top: 60px;
+}
+.closing-statement { font-size: 1.1rem; color: var(--secondary); }
+.syukur { font-family: var(--font-arabic); font-size: 2.2rem; margin: 20px 0; color: var(--white); }
+.footer-line { border: 0; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 30px auto; max-width: 500px;}
+.hormat { color: var(--secondary); font-size: 1rem; }
+.footer-instansi { font-family: var(--font-title); font-size: 1.5rem; color: var(--white); margin-top: 5px; letter-spacing: 1px; }
+.copyright { font-size: 0.8rem; opacity: 0.7; margin-top: 40px; }
+
+/* Responsive adjustments */
+@media(max-width: 768px) {
+    .main-title { font-size: 2rem; }
+    .angkatan-box h2 { font-size: 1.4rem; }
+    .section-title { font-size: 1.8rem; }
+    .glassmorphism { padding: 25px 20px; }
+    .timeline::before { left: 20px; }
+    .timeline-icon { left: -25px; }
+    .timeline-content { margin-left: 15px; }
+}
